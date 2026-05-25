@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intellectual Navigation UI</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:
+    radial-gradient(circle at top left,#1e293b,#020617 70%);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    color:white;
+}
+
+/* Main card */
+
+.card{
+    width:900px;
+    height:550px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.1);
+    overflow:hidden;
+    box-shadow:0 10px 40px rgba(0,0,0,0.5);
+    position:relative;
+}
+
+/* Navigation */
+
+.navbar{
+    width:100%;
+    padding:20px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:2px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.logo:hover{
+    color:#60a5fa;
+}
+
+/* Buttons */
+
+.nav-buttons{
+    display:flex;
+    gap:15px;
+}
+
+.btn{
+    padding:12px 24px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    color:white;
+    background:linear-gradient(145deg,#0f172a,#1e293b);
+    transition:0.35s;
+    font-weight:600;
+    letter-spacing:1px;
+    box-shadow:
+    5px 5px 12px rgba(0,0,0,0.4),
+    -2px -2px 8px rgba(255,255,255,0.03);
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    background:linear-gradient(145deg,#1e293b,#334155);
+    box-shadow:
+    0 0 20px rgba(96,165,250,0.4);
+}
+
+/* Pages */
+
+.page{
+    display:none;
+    height:calc(100% - 90px);
+    padding:50px;
+    animation:fade 0.4s ease;
+}
+
+.page.active{
+    display:block;
+}
+
+.page h1{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.page p{
+    font-size:18px;
+    opacity:0.8;
+    line-height:1.6;
+}
+
+/* Animation */
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+
+        <!-- HOME LOGO -->
+        <div class="logo" onclick="showPage('home')">
+            NEURAL
+        </div>
+
+        <!-- NAV BUTTONS -->
+        <div class="nav-buttons">
+
+            <button class="btn" onclick="showPage('home')">
+                Home
+            </button>
+
+            <button class="btn" onclick="showPage('research')">
+                Research
+            </button>
+
+            <button class="btn" onclick="showPage('quantum')">
+                Quantum
+            </button>
+
+            <button class="btn" onclick="showPage('contact')">
+                Contact
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- HOME PAGE -->
+    <div class="page active" id="home">
+        <h1>Welcome</h1>
+        <p>
+            This is the first page.  
+            Clicking the logo or Home button always returns here.
+        </p>
+    </div>
+
+    <!-- RESEARCH PAGE -->
+    <div class="page" id="research">
+        <h1>Research Lab</h1>
+        <p>
+            Advanced AI research systems and futuristic interfaces.
+        </p>
+    </div>
+
+    <!-- QUANTUM PAGE -->
+    <div class="page" id="quantum">
+        <h1>Quantum Core</h1>
+        <p>
+            Experimental quantum computing simulations and neural systems.
+        </p>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div class="page" id="contact">
+        <h1>Contact</h1>
+        <p>
+            neural@futurelabs.ai
+        </p>
+    </div>
+
+</div>
+
+<script>
+
+function showPage(pageId){
+
+    // Hide all pages
+    const pages = document.querySelectorAll('.page');
+
+    pages.forEach(page => {
+        page.classList.remove('active');
+    });
+
+    // Show selected page
+    document.getElementById(pageId).classList.add('active');
+}
+
+</script>
+
+</body>
+</html>
